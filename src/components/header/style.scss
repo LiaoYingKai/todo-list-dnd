@@ -1,0 +1,29 @@
+@import '../../scss/color';
+
+.header{
+	background-color: $light-blue;
+	ul{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		li {
+			padding: 24px 0;
+			width: 160px;
+			text-align: center;
+			box-sizing: border-box;
+			text-decoration:  none;
+			font-size: 22px;
+			color: $deep-blue;
+			cursor: pointer;
+			margin: 0px 15px;
+			&:hover{
+				color: $white;
+				border-bottom: 4px solid $deep-blue;
+			}
+		}
+		.active{
+			color: $white;
+			border-bottom: 4px solid $deep-blue;
+		}
+	}
+}
