@@ -1,0 +1,37 @@
+@import '../../scss/color';
+
+input[type='checkbox']#checkbox  {
+	display: none;
+}
+input[type='checkbox']#checkbox:checked+label {
+	background-color: $light-blue;
+	position: relative;
+	&:after,
+	&:before {
+		content: '';
+		display: inline-block;
+		height: 2px;
+		background-color: $white;
+		position: absolute;
+	}
+	&:after {
+		width: 9px;
+		top: 14px;
+		left: 4px;
+		transform: rotate(45deg);
+
+	}
+	&:before {
+		width: 14px;
+		top: 12px;
+		left: 9px;
+		transform: rotate(-45deg);
+	}
+}
+
+.checkbox {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	background-color: $black;
+}
