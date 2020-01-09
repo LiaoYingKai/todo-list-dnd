@@ -1,0 +1,13 @@
+@import '../../scss/color';
+
+.icon {
+	&--light-blue {
+		color: $light-blue;
+	}
+	&--deep-orange {
+		color: $deep-orange;
+	}
+	&--black {
+		color: $black;
+	}
+}
