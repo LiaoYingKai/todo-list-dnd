@@ -1,5 +1,4 @@
 import React, { useState, } from 'react';
-import reactIcon from '../../icon/react-icon.png';
 import Header from '../../components/header';
 import './style.scss';
 import Todo from '../../components/todo';
