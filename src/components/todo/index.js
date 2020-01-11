@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../button';
 import FontIcon from '../font-icon';
@@ -18,6 +18,7 @@ const {
 } = IconTypeEnums;
 
 function Todo() {
+	const [isAdd, setIsAdd] = useState(false);
 
 	function _renderContentItem(icon, title, content) {
 		return (
@@ -28,36 +29,51 @@ function Todo() {
 		);
 	}
 
-	return (
-		<div className="todo">
-			<div className="todo__add">
+	function _renderAdd() {
+		return (
+			<div
+				className="todo__add"
+				onClick={() => {setIsAdd(true);}}
+			>
 				+ Add Task
 			</div>
-			<div className="todo__title">
-				<div>
-					<Checkbox/>
-					<input className="todo__title-input" placeholder="Type Something Here…"></input>
+		);
+	}
+	function _renderForm() {
+		return (
+			<React.Fragment>
+				<div className="todo__title">
+					<div>
+						<Checkbox/>
+						<input className="todo__title-input" placeholder="Type Something Here…"></input>
+					</div>
+					<div>
+						<FontIcon type={LINE_STAR}/>
+						<FontIcon
+							type={PEN}
+							color={FontIcon.ColorEnums.LIGHT_BLUE}
+						/>
+					</div>
 				</div>
-				<div>
-					<FontIcon type={LINE_STAR}/>
-					<FontIcon
-						type={PEN}
-						color={FontIcon.ColorEnums.LIGHT_BLUE}
-					/>
+				<div className="todo__content">
+					<FontIcon type={CALENDAR}/>
+					<FontIcon type={FILE}/>
+					<FontIcon type={COMMENT}/>
 				</div>
-			</div>
-			<div className="todo__content">
-				<FontIcon type={CALENDAR}/>
-				<FontIcon type={FILE}/>
-				<FontIcon type={COMMENT}/>
+				<div className="todo__footer">
+					<Button
+						type={Button.TypeEnums.CANCAL}
+						onClick={() => {setIsAdd(false);}}
+					> Cancel </Button>
+					<Button> Add </Button>
+				</div>
+			</React.Fragment>
+		);
+	}
 
-			</div>
-			<div className="todo__footer">
-				<Button type={Button.TypeEnums.CANCAL}> Cancel </Button>
-				<Button> Add </Button>
-			</div>
-			
-			
+	return (
+		<div className="todo">
+			{isAdd ? _renderForm() : _renderAdd()}
 		</div>
 	);
 }
