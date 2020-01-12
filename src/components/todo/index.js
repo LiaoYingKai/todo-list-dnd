@@ -1,24 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../button';
 import FontIcon from '../font-icon';
 import Checkbox from '../checkbox';
 import './style.scss';
-const propTypes = {};
+const propTypes = {
+	onClickCancel: PropTypes.func,
+	onClickAdd: PropTypes.func,
+};
+
+const defaultProps = {
+	onClickCancel: () => {},
+	onClickAdd: () => {},
+};
 
 const { IconTypeEnums } = FontIcon;
 const {
 	PEN,
-	EDIT,
-	SOLID_STAR,
 	LINE_STAR,
 	CALENDAR,
 	FILE,
 	COMMENT,
 } = IconTypeEnums;
 
-function Todo() {
-	const [isAdd, setIsAdd] = useState(true);
+function Todo({
+	onClickCancel,
+}) {
 
 	function _renderDate() {
 		return (
@@ -62,18 +69,8 @@ function Todo() {
 		);
 	}
 
-	function _renderAdd() {
-		return (
-			<div
-				className="todo__add"
-				onClick={() => {setIsAdd(true);}}
-			>
-				+ Add Task
-			</div>
-		);
-	}
-	function _renderForm() {
-		return (
+	return (
+		<div className="todo">
 			<React.Fragment>
 				<div className="todo__title">
 					<div>
@@ -96,21 +93,16 @@ function Todo() {
 				<div className="todo__footer">
 					<Button
 						type={Button.TypeEnums.CANCAL}
-						onClick={() => {setIsAdd(false);}}
+						onClick={onClickCancel}
 					> Cancel </Button>
 					<Button> Add </Button>
 				</div>
 			</React.Fragment>
-		);
-	}
-
-	return (
-		<div className="todo">
-			{isAdd ? _renderForm() : _renderAdd()}
 		</div>
 	);
 }
 
 Todo.propTypes = propTypes;
+Todo.defaultProps = defaultProps;
 
 export default Todo;
