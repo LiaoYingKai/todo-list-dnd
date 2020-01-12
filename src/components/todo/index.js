@@ -18,13 +18,46 @@ const {
 } = IconTypeEnums;
 
 function Todo() {
-	const [isAdd, setIsAdd] = useState(false);
+	const [isAdd, setIsAdd] = useState(true);
 
-	function _renderContentItem(icon, title, content) {
+	function _renderDate() {
 		return (
-			<div className="todo_content-tem">
-				<div></div>
-				<div></div>
+			<div className="todo__content-item">
+				<FontIcon type={CALENDAR}/>
+				<div>
+					<p>Deadline</p>
+					{/* TODO add date and time selector */}
+					<input className="todo__content-item--date" placeholder="yyyy/mm/dd"></input>
+					<input className="todo__content-item--time" placeholder="hh:mm"></input>
+				</div>
+			</div>
+		);
+	}
+
+	function _renderFile() {
+		return (
+			<div className="todo__content-item">
+				<FontIcon type={FILE}/>
+				<div>
+					<p>File</p>
+					{/* <input type="file"></input> */}
+					<label className="custom-file-upload">
+						<input type="file"/>
+						+
+					</label>
+				</div>
+			</div>
+		);
+	}
+
+	function _renderComment() {
+		return (
+			<div className="todo__content-item">
+				<FontIcon type={COMMENT}/>
+				<div>
+					<p>Comment</p>
+					<textarea placeholder="Type your memo here…"></textarea>
+				</div>
 			</div>
 		);
 	}
@@ -56,9 +89,9 @@ function Todo() {
 					</div>
 				</div>
 				<div className="todo__content">
-					<FontIcon type={CALENDAR}/>
-					<FontIcon type={FILE}/>
-					<FontIcon type={COMMENT}/>
+					{_renderDate()}
+					{_renderFile()}
+					{_renderComment()}
 				</div>
 				<div className="todo__footer">
 					<Button

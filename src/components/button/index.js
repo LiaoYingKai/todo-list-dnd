@@ -13,7 +13,7 @@ const {
 } = TypeEnums;
 
 const propTypes = {
-	type: Object.values(TypeEnums),
+	type: PropTypes.oneOf(Object.values(TypeEnums)),
 	children: PropTypes.string,
 	className: PropTypes.string,
 	onClick: PropTypes.func,

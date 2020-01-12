@@ -51,6 +51,55 @@
 	}
 	&__content {
 		background-color: $grey10;
+		padding: 26px 78px 2px 72px;
+		&-item {
+			display: flex;
+			font-size: 20px;
+			margin-bottom: 22px;
+			> svg {
+				margin-right: 10px;
+			}
+			> div {
+				text-align: left;
+				p {
+					margin-bottom: 8px;
+					font-size: 20px;
+					font-weight: 600;
+				}
+				input[type='file'] {
+					display: none;
+				}
+				.custom-file-upload {
+					display: inline-block;
+					cursor: pointer;
+					width: 32px;
+					height: 32px;
+					line-height: 28px;
+					border-radius: 2px;
+					background-color: $grey30;
+					color: $white;
+					text-align: center;
+				}
+				textarea {
+					width: 445px;
+					height: 120px;
+					padding: 8px 16px;
+					box-sizing: border-box;
+					border: 0px;
+				}
+			}
+			&--date,
+			&--time {
+				width: 162px;
+				height: 35px;
+				box-sizing: border-box;
+				border: 0;
+				padding: 8px 16px;
+			}
+			&--date {
+				margin-right: 8px;
+			}
+		}
 	}
 	&__footer {
 		display: flex;
