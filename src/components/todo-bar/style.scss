@@ -1,0 +1,54 @@
+@import '../../scss/color';
+.todo-bar {
+	width: 100%;
+	height: 102px;
+	box-sizing: border-box;
+	padding: 24px 32px 16px 32px;
+	background-color: $grey10;
+
+	&__title {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 18px;
+		> div {
+			display: flex;
+			align-items: center;
+			.checkbox {
+				margin-right: 16px;
+			}
+			&:last-child {
+				font-size: 24px;
+				svg {
+					&:first-child {
+						margin-right: 32px;
+					}
+				}
+			}
+		}
+		&-input {
+			font-size: 24px;
+			background-color: transparent;
+			line-height: 28px;
+			border: 0;
+			width: 350px;
+			&::placeholder {
+				color: $black;
+			}
+		}
+	}
+	&__icon {
+		text-align: left;
+		svg {
+			color: $grey50;
+			margin-right: 8px;
+			&:first-child{
+				margin-left: 48px;
+			}
+		}
+		span {
+			color: $grey50;
+			margin-right: 8px;
+		}
+	}
+}

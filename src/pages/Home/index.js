@@ -3,6 +3,7 @@ import Header from '../../components/header';
 import './style.scss';
 import Todo from '../../components/todo';
 import AddTodoBlock from '../../components/add-todo-black';
+import TodoBar from '../../components/todo-bar';
 
 function Home() {
 	const [isAdd, setIsAdd] = useState(false);
@@ -15,6 +16,7 @@ function Home() {
 					<Todo onClickCancel={() => {setIsAdd(false);}}/> :
 					<AddTodoBlock onClick={() => {setIsAdd(true);}}/>
 				}
+				<TodoBar/>
 			</div>
 		</div>
 	);
