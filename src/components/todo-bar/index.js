@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FontIcon from '../font-icon';
 import Checkbox from '../checkbox';
+import cx from 'classnames';
 import './style.scss';
 
 const propTypes = {
@@ -17,7 +18,6 @@ const { IconTypeEnums } = FontIcon;
 
 const {
 	PEN,
-	EDIT,
 	SOLID_STAR,
 	LINE_STAR,
 	CALENDAR,
@@ -29,26 +29,34 @@ function TodoBar({
 	todo,
 	onClick,
 }) {
+	const {
+		title,
+		file,
+		date,
+		comment,
+		statue = {},
+	} = todo;
+	const {
+		isImportant = false,
+		isDone = false,
+	} = statue;
+
 	return (
-		<div className="todo-bar">
+		<div className="todo-bar" onClick={onClick}>
 			<div className="todo-bar__title">
 				<div>
-					<Checkbox/>
-					<input className="todo-bar__title-input" placeholder="Type Something Here…"></input>
+					<Checkbox isCheck={isDone}/>
+					<div className={cx("todo-bar__title-text", { "todo-bar__title-text--checked" : isDone })}>{title}</div>
 				</div>
 				<div>
-					<FontIcon type={LINE_STAR}/>
-					<FontIcon
-						type={PEN}
-						color={FontIcon.ColorEnums.BLACK}
-					/>
+					{isImportant ? <FontIcon type={SOLID_STAR} color={FontIcon.ColorEnums.DEEP_ORANGE}/> : <FontIcon type={LINE_STAR}/>}
+					<FontIcon type={PEN} color={FontIcon.ColorEnums.BLACK}/>
 				</div>
 			</div>
 			<div className="todo-bar__icon">
-				<FontIcon type={CALENDAR}/>
-				<span>2020/01/13</span>
-				<FontIcon type={FILE}/>
-				<FontIcon type={COMMENT}/>
+				{ date ? <span> <FontIcon type={CALENDAR}/> 2020/01/13</span> : null }
+				{ file ? <FontIcon type={FILE}/> : null}
+				{ comment ? <FontIcon type={COMMENT}/> : null}
 			</div>
 		</div>
 	);

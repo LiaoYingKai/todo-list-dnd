@@ -5,6 +5,7 @@
 	box-sizing: border-box;
 	padding: 24px 32px 16px 32px;
 	background-color: $grey10;
+	cursor: pointer;
 
 	&__title {
 		display: flex;
@@ -26,14 +27,16 @@
 				}
 			}
 		}
-		&-input {
+		&-text {
 			font-size: 24px;
 			background-color: transparent;
 			line-height: 28px;
 			border: 0;
 			width: 350px;
-			&::placeholder {
-				color: $black;
+			text-align: left;
+			&--checked {
+				color: #C8C8C8;
+				text-decoration:line-through;
 			}
 		}
 	}
@@ -43,7 +46,7 @@
 			color: $grey50;
 			margin-right: 8px;
 			&:first-child{
-				margin-left: 48px;
+				margin-left: 40px;
 			}
 		}
 		span {
