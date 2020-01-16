@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useState, } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../button';
 import FontIcon from '../font-icon';
 import Checkbox from '../checkbox';
+import DatePicker from '../date-picker';
 import './style.scss';
 const propTypes = {
 	onClickCancel: PropTypes.func,
 	onClickAdd: PropTypes.func,
+	todo: PropTypes.object,
 };
 
 const defaultProps = {
 	onClickCancel: () => {},
 	onClickAdd: () => {},
+	todo: {},
 };
 
 const { IconTypeEnums } = FontIcon;
@@ -25,17 +28,40 @@ const {
 
 function Todo({
 	onClickCancel,
+	todo,
 }) {
+	const [title, setTitle] = useState(todo.title || '');
+	const [date, setDate] = useState(todo.date || '') ;
+	const [time, setTime] = useState(getTime());
+	const [file, setFile] = useState(todo.setDate || '');
+	const [comment, setComment] = useState(todo.comment || '');
 
+	function _handleAdd() {
+		console.log(date, time);
+	}
+
+	function getTime() {
+		const today = new Date();
+
+		return `${today.getHours()}:${today.getMinutes()}`;
+	}
 	function _renderDate() {
 		return (
 			<div className="todo__content-item">
 				<FontIcon type={CALENDAR}/>
 				<div>
 					<p>Deadline</p>
-					{/* TODO add date and time selector */}
-					<input className="todo__content-item--date" placeholder="yyyy/mm/dd"></input>
-					<input className="todo__content-item--time" placeholder="hh:mm"></input>
+					<DatePicker
+						onSelect={(date) => {setDate(date);}}
+						defaultValue={'2019/11/11'}
+					/>
+					<input
+						type="time"
+						className="todo__content-item--time"
+						placeholder="hh:mm"
+						onChange={(event) => {setTime(event.target.value);}}
+						value={time}
+					/>
 				</div>
 			</div>
 		);
@@ -47,7 +73,6 @@ function Todo({
 				<FontIcon type={FILE}/>
 				<div>
 					<p>File</p>
-					{/* <input type="file"></input> */}
 					<label className="custom-file-upload">
 						<input type="file"/>
 						+
@@ -63,19 +88,27 @@ function Todo({
 				<FontIcon type={COMMENT}/>
 				<div>
 					<p>Comment</p>
-					<textarea placeholder="Type your memo here…"></textarea>
+					<textarea
+						placeholder="Type your memo here…"
+						value={comment}
+						onChange={(event) => {setComment(event.target.vlaue);}}
+					></textarea>
 				</div>
 			</div>
 		);
 	}
-
 	return (
 		<div className="todo">
 			<React.Fragment>
 				<div className="todo__title">
 					<div>
 						<Checkbox/>
-						<input className="todo__title-input" placeholder="Type Something Here…"></input>
+						<input
+							className="todo__title-input"
+							placeholder="Type Something Here…"
+							value={title}
+							onChange={(event) => {setTitle(event.target.value);}}
+						/>
 					</div>
 					<div>
 						<FontIcon type={LINE_STAR}/>
@@ -95,7 +128,9 @@ function Todo({
 						type={Button.TypeEnums.CANCAL}
 						onClick={onClickCancel}
 					> Cancel </Button>
-					<Button> Add </Button>
+					<Button
+						onClick={_handleAdd}
+					> Add </Button>
 				</div>
 			</React.Fragment>
 		</div>
