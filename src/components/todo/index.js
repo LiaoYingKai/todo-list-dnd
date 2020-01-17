@@ -6,13 +6,13 @@ import Checkbox from '../checkbox';
 import DatePicker from '../date-picker';
 import './style.scss';
 const propTypes = {
-	onClickCancel: PropTypes.func,
+	onClose: PropTypes.func,
 	onClickAdd: PropTypes.func,
 	todo: PropTypes.object,
 };
 
 const defaultProps = {
-	onClickCancel: () => {},
+	onClose: () => {},
 	onClickAdd: () => {},
 	todo: {},
 };
@@ -27,7 +27,8 @@ const {
 } = IconTypeEnums;
 
 function Todo({
-	onClickCancel,
+	onClose,
+	onClickAdd,
 	todo,
 }) {
 	const [title, setTitle] = useState(todo.title || '');
@@ -38,6 +39,8 @@ function Todo({
 
 	function _handleAdd() {
 		console.log(date, time);
+		onClose();
+		onClickAdd();
 	}
 
 	function getTime() {
@@ -126,7 +129,7 @@ function Todo({
 				<div className="todo__footer">
 					<Button
 						type={Button.TypeEnums.CANCAL}
-						onClick={onClickCancel}
+						onClick={onClose}
 					> Cancel </Button>
 					<Button
 						onClick={_handleAdd}

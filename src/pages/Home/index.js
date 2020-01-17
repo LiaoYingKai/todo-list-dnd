@@ -20,12 +20,20 @@ function Home() {
 	const [isAdd, setIsAdd] = useState(false);
 	const [todos, setTodos] = useState([]);
 
+	function _handleAddTodo() {
+		// TODO add function
+		console.log('add');
+	}
+
 	return (
 		<div className="home">
 			<Header/>
 			<div className="home__content">
 				{isAdd ? 
-					<Todo onClickCancel={() => {setIsAdd(false);}}/> :
+					<Todo
+						onClose={() => {setIsAdd(false);}}
+						onClickAdd={_handleAddTodo}
+					/> :
 					<AddTodoBlock onClick={() => {setIsAdd(true);}}/>
 				}
 				
