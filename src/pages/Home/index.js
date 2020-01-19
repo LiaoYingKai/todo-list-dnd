@@ -17,11 +17,12 @@ const todo = {
 };
 
 function Home() {
-	const todos = [
+	const fakeTodos = [
 		{
 			title: 'test',
 			file: 'aa',
 			date: 'aa',
+			time: 'aa',
 			comment: 'aa',
 			statue: {
 				isImportant: true,
@@ -32,6 +33,7 @@ function Home() {
 			title: 'test2',
 			file: 'bb',
 			date: 'aba',
+			time: 'aba',
 			comment: '',
 			statue: {
 				isImportant: false,
@@ -40,11 +42,10 @@ function Home() {
 		},
 	];
 	const [isAdd, setIsAdd] = useState(false);
-	// const [todos, setTodos] = useState([]);
+	const [todos, setTodos] = useState(fakeTodos);
 
-	function _handleAddTodo() {
-		// TODO add function
-		console.log('add');
+	function _handleAddTodo(todo) {
+		setTodos([...todos, ...[todo]]);
 	}
 
 	return (
@@ -73,7 +74,6 @@ function Home() {
 					{todos.filter(todo => !todo.statue.isDone).length} tasks left
 				</p>
 			</div>
-			
 		</div>
 	);
 }

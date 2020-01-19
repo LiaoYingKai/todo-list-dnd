@@ -40,7 +40,17 @@ function Todo({
 	function _handleAdd() {
 		console.log(date, time);
 		onClose();
-		onClickAdd();
+		onClickAdd({
+			title: title,
+			date: date,
+			time: time,
+			file: file,
+			comment: comment,
+			statue: {
+				isImportant: false,
+				isDone: false,
+			}
+		});
 	}
 
 	function getTime() {
