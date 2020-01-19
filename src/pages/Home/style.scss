@@ -1,8 +1,16 @@
+@import '../../scss/color';
+
 .home{
 	text-align: center;
 	&__content {
 		width: 620px;
 		margin: 24px auto;
+		> p {
+			text-align: left;
+			color: $grey30;
+			margin-left: 30px;
+			font-size: 24px;
+		}
 	}
 	&__add-btn {
 		margin-bottom: 24px;

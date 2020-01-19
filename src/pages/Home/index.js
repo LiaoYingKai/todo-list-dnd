@@ -69,7 +69,11 @@ function Home() {
 						})
 					}
 				</div>
+				<p>
+					{todos.filter(todo => !todo.statue.isDone).length} tasks left
+				</p>
 			</div>
+			
 		</div>
 	);
 }
