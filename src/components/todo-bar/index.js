@@ -42,7 +42,7 @@ function TodoBar({
 	} = statue;
 
 	return (
-		<div className="todo-bar" onClick={onClick}>
+		<div className={cx("todo-bar", { "todo-bar--important": isImportant, })} onClick={onClick} >
 			<div className="todo-bar__title">
 				<div>
 					<Checkbox isCheck={isDone}/>

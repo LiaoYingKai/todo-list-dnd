@@ -1,7 +1,15 @@
 .home{
 	text-align: center;
-	&__content{
+	&__content {
 		width: 620px;
 		margin: 24px auto;
+	}
+	&__add-btn {
+		margin-bottom: 24px;
+	}
+	&__list {
+		> div {
+			margin-bottom: 8px;
+		}
 	}
 }

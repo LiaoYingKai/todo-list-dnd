@@ -17,8 +17,30 @@ const todo = {
 };
 
 function Home() {
+	const todos = [
+		{
+			title: 'test',
+			file: 'aa',
+			date: 'aa',
+			comment: 'aa',
+			statue: {
+				isImportant: true,
+				isDone: true,
+			}
+		},
+		{
+			title: 'test2',
+			file: 'bb',
+			date: 'aba',
+			comment: '',
+			statue: {
+				isImportant: false,
+				isDone: false,
+			}
+		},
+	];
 	const [isAdd, setIsAdd] = useState(false);
-	const [todos, setTodos] = useState([]);
+	// const [todos, setTodos] = useState([]);
 
 	function _handleAddTodo() {
 		// TODO add function
@@ -29,24 +51,24 @@ function Home() {
 		<div className="home">
 			<Header/>
 			<div className="home__content">
-				{isAdd ? 
-					<Todo
-						onClose={() => {setIsAdd(false);}}
-						onClickAdd={_handleAddTodo}
-					/> :
-					<AddTodoBlock onClick={() => {setIsAdd(true);}}/>
-				}
-				
-				<TodoBar todo={{
-					title: 'test',
-					file: 'aa',
-					date: 'aa',
-					comment: 'aa',
-					statue: {
-						isImportant: true,
-						isDone: true,
+				<div className="home__add-btn">
+					{isAdd ? 
+						<Todo
+							onClose={() => {setIsAdd(false);}}
+							onClickAdd={_handleAddTodo}
+						/> :
+						<AddTodoBlock onClick={() => {setIsAdd(true);}}/>
 					}
-				}}/>
+				</div>
+				<div className="home__list">
+					{
+						todos.map((todo, index) => {
+							return (
+								<TodoBar todo={todo} key={index}/>
+							);
+						})
+					}
+				</div>
 			</div>
 		</div>
 	);
