@@ -5,17 +5,6 @@ import Todo from '../../components/todo';
 import AddTodoBlock from '../../components/add-todo-black';
 import TodoBar from '../../components/todo-bar';
 
-const todo = {
-	title: '',
-	file: '',
-	date: '',
-	comment: '',
-	statue: {
-		isImportant: false,
-		isDone: false,
-	}
-};
-
 function Home() {
 	const fakeTodos = [
 		{

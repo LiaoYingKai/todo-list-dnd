@@ -10,5 +10,4 @@ function RouteLayout() {
 	);
 }
 
-
 export default RouteLayout;

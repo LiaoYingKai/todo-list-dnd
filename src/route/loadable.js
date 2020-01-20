@@ -6,6 +6,7 @@ export default function(options) {
 		loading: Loading,
 	}, options));
 }
+
 const Loading = () => {
 	return <div> Loading... </div>;
 };
